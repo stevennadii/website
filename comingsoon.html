@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coming Soon</title>
+
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: #252628;
+        font-family: "Arial", sans-serif;
+        color: #333;
+      }
+      .container {
+        text-align: center;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 600px;
+        width: 100%;
+      }
+      h1 {
+        font-size: 3rem;
+        color: #ffd35a;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 30px;
+      }
+      .countdown {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 30px;
+      }
+      .subscribe {
+        margin-top: 20px;
+      }
+      input[type="email"] {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>On Progress</h1>
+
+      <div class="countdown" id="countdown">
+        <!-- Countdown will be inserted here -->
+      </div>
+    </div>
+
+    <script>
+      // Countdown Timer
+      const countdownDate = new Date("2024-08-01T00:00:00").getTime();
+      const countdownElement = document.getElementById("countdown");
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdownElement.innerHTML = `
+        ${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds
+      `;
+
+        if (distance < 0) {
+          countdownElement.innerHTML = "We have launched!";
+        }
+      }
+
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>
